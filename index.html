@@ -75,119 +75,296 @@
         </div>
     </section>
 
-    <!-- ORDER SYSTEM -->
-    <section id="order" class="max-w-3xl mx-auto px-4 py-16 space-y-6">
 
-        <h2 class="heading-font text-4xl text-orange-500 text-center mb-10">ORDER NOW</h2>
 
-        <!-- PRODUCT SELECT -->
-        <div class="bg-black p-5 rounded-xl shadow-lg">
-            <label class="block mb-2 font-bold">Choose Product</label>
-            <select id="product" class="w-full p-3 text-black rounded">
-                <option value="" disabled selected>Select item</option>
-                <option value="2PC Burger Steak|40">2PC Burger Steak - ₱40</option>
-                <option value="2PC Burger Steak (Spicy)|45">2PC Burger Steak (Spicy) - ₱45</option>
-                <option value="1PC Ala King|40">1PC Ala King - ₱40</option>
-                <option value="1PC Ala King (Spicy)|45">1PC Ala King (Spicy) - ₱45</option>
-                <option value="1PC Hungarian|49">1PC Hungarian - ₱49</option>
-            </select>
-        </div>
 
-        <!-- SAUCE SELECT -->
-        <div class="bg-black p-5 rounded-xl shadow-lg">
-            <label class="block mb-2 font-bold">Add Sauce?</label>
-            <select id="sauce" class="w-full p-3 text-black rounded">
-                <option value="0" selected>No Sauce</option>
-                <option value="15">Medium Sauce +₱15</option>
-                <option value="20">Large Sauce +₱20</option>
-            </select>
-        </div>
 
-        <!-- QUANTITY -->
-        <div class="bg-black p-5 rounded-xl shadow-lg">
-            <label class="block mb-2 font-bold">Quantity</label>
-            <input id="qty" type="number" value="1" min="1" class="w-full p-3 text-black rounded">
-        </div>
+<section id="order" class="max-w-3xl mx-auto px-4 py-16 space-y-8">
+  <h2 class="text-4xl font-extrabold text-orange-500 text-center mb-10">ORDER NOW</h2>
 
-        <!-- DELIVERY ADDRESS -->
-        <div class="bg-black p-5 rounded-xl shadow-lg">
-            <label class="block mb-2 font-bold">Delivery Address</label>
-            <textarea id="address" rows="2" class="w-full p-3 text-black rounded" placeholder="Ex: 502 Teacher Bldg, Bagong Pagasa"></textarea>
-        </div>
+  <!-- PRODUCT SELECTION -->
+  <div class="bg-gray-900 p-6 rounded-2xl shadow-lg space-y-4">
+    <label class="block font-bold mb-1 text-white">Choose Product (You can add multiple)</label>
+    <select id="product" class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500">
+  <option value="" disabled selected>Select item</option>
 
-        <!-- TOTAL -->
-        <div class="bg-orange-600 p-4 rounded-xl text-black font-bold text-lg text-center">
-            TOTAL: ₱ <span id="total">0</span>
-        </div>
+  <!-- Chicken ALA King -->
+  <optgroup label="--------- Chicken ALA King ---------">
+    <option value="1PC Chicken ALA King|40">1PC Chicken ALA King - ₱40</option>
+    <option value="2PC Chicken ALA King|80">2PC Chicken ALA King - ₱80</option>
+    <option value="4PC Chicken ALA King|160">4PC Chicken ALA King - ₱160</option>
+  </optgroup>
+  <optgroup label="--------- Rice Meal ---------">
+    <option value="1PC Chicken ALA King with 1 rice|55">1PC Chicken ALA King with 1 rice - ₱55</option>
+    <option value="1PC Chicken ALA King with 2 rice|65">1PC Chicken ALA King with 2 rice - ₱65</option>
+    <option value="2PC Chicken ALA King with 2 rice|100">2PC Chicken ALA King with 2 rice - ₱100</option>
+  </optgroup>
 
-        <!-- COPY ORDER BUTTON -->
-        <div class="space-y-4">
-            <textarea id="orderText" rows="8" class="w-full p-3 text-black rounded bg-gray-200" readonly placeholder="Your order will appear here..."></textarea>
-            <button onclick="copyOrder()" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-bold py-3 rounded-xl text-lg transition">
-                COPY ORDER
-            </button>
-            <button onclick="openMessenger()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-lg transition">
-                OPEN FACEBOOK MESSENGER
-            </button>
-        </div>
+  <!-- Burger Steak -->
+  <optgroup label="--------- Burger Steak ---------">
+    <option value="2PC Burger Steak|40">2PC Burger Steak - ₱40</option>
+    <option value="4PC Burger Steak|80">4PC Burger Steak - ₱80</option>
+    <option value="8PC Burger Steak|160">8PC Burger Steak - ₱160</option>
+  </optgroup>
+  <optgroup label="--------- Rice Meal ---------">
+    <option value="2PC Burger Steak with 1 rice|55">2PC Burger Steak with 1 rice - ₱55</option>
+    <option value="2PC Burger Steak with 2 rice|65">2PC Burger Steak with 2 rice - ₱65</option>
+    <option value="4PC Burger Steak with 2 rice|100">4PC Burger Steak with 2 rice - ₱100</option>
+  </optgroup>
 
-    </section>
+  <!-- Hungarian Sausage -->
+  <optgroup label="--------- Hungarian Sausage ---------">
+    <option value="1PC Hungarian Sausage|50">1PC Hungarian Sausage - ₱50</option>
+    <option value="2PC Hungarian Sausage|100">2PC Hungarian Sausage - ₱100</option>
+    <option value="4PC Hungarian Sausage|200">4PC Hungarian Sausage - ₱200</option>
+  </optgroup>
+  <optgroup label="--------- Rice Meal ---------">
+    <option value="1PC Hungarian Sausage with 1 rice|60">1PC Hungarian Sausage with 1 rice - ₱60</option>
+    <option value="1PC Hungarian Sausage with 2 rice|70">1PC Hungarian Sausage with 2 rice - ₱70</option>
+    <option value="2PC Hungarian Sausage with 2 rice|120">2PC Hungarian Sausage with 2 rice - ₱120</option>
+  </optgroup>
+</select>
 
+
+    <div class="flex items-center gap-4">
+      <div class="flex-1">
+        <label class="block font-bold mb-1 text-white">Quantity</label>
+        <input type="number" id="qty" min="1" value="1" class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+   
+    </div>
+
+
+    <hr class="border-gray-700 my-4">
+
+    <!-- SAUCE SELECTION -->
+    <label class="block font-bold mb-2 text-white">Add Sauce (You can add multiple)</label>
+    <div class="flex items-center gap-2">
+      <select id="sauceSelect" class="flex-1 p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500">
+        <option value="0">No Sauce</option>
+        <option value="5">Spicy Sauce +₱5</option>
+        <option value="15">Medium Sauce +₱15</option>
+        <option value="20">Large Sauce +₱20</option>
+      </select>
+      <input type="number" id="sauceQty" min="1" value="1" class="w-20 p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Qty">
+      <button onclick="addSauce()" class="bg-orange-500 hover:bg-orange-600 text-black font-bold px-4 py-2 rounded-xl transition shadow-md">
+        Add Sauce
+      </button>
+    </div>
+    <ul id="addedSauces" class="mt-3 space-y-1 text-gray-300"></ul>
+  </div>
+   <button onclick="addProductToCart()" class="bg-orange-500 hover:bg-orange-600 text-black font-bold px-6 py-3 rounded-xl transition shadow-md">
+        ADD PRODUCT
+      </button>
+
+
+          <!-- SHOW ADDED PRODUCTS BELOW -->
+    <ul id="addedProducts" class="mt-3 space-y-2 text-gray-300"></ul>
+
+  <!-- CART DISPLAY -->
+  <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+    <h3 class="font-bold text-xl mb-3 text-white">Your Cart</h3>
+    <ul id="cartItems" class="space-y-2 text-white"></ul>
+    <p class="font-bold text-xl mt-3 text-orange-500">TOTAL: ₱<span id="cartTotal">0</span></p>
+  </div>
+
+  <!-- DELIVERY ADDRESS -->
+  <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+    <label class="block mb-2 font-bold text-white">Delivery Address</label>
+    <textarea id="address" rows="2" class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Ex: 502 Teacher Bldg, Bagong Pagasa"></textarea>
+  </div>
+
+  <!-- COPY ORDER -->
+  <div class="space-y-4">
+    <textarea id="orderText" rows="8" class="w-full p-3 text-black rounded-xl bg-gray-200" readonly placeholder="Your order will appear here..."></textarea>
+    <button onclick="copyOrder()" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-bold py-3 rounded-xl text-lg transition shadow-md">
+      COPY ORDER
+    </button>
+    <button onclick="openMessenger()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-lg transition shadow-md">
+      OPEN FACEBOOK MESSENGER
+    </button>
+  </div>
+</section>
 <script>
-function calculateTotal() {
-    const product = document.getElementById("product").value;
+let addedProducts = [];
+let sauces = [];
+
+// Add sauce
+function addSauce() {
+    const sauceSelect = document.getElementById("sauceSelect");
+    const sauceQty = parseInt(document.getElementById("sauceQty").value);
+    const saucePrice = parseInt(sauceSelect.value);
+    const sauceName = sauceSelect.options[sauceSelect.selectedIndex].text;
+
+    if (saucePrice === 0) return;
+    if (!sauceQty || sauceQty < 1) return alert("Quantity must be at least 1");
+
+    sauces.push({ sauceName, qty: sauceQty, price: saucePrice });
+    renderSauces();
+    generateOrderText(); // update order
+}
+
+// Render sauces
+function renderSauces() {
+    const ul = document.getElementById("addedSauces");
+    ul.innerHTML = "";
+    sauces.forEach((s, index) => {
+        const li = document.createElement("li");
+        li.className = "flex justify-between items-center bg-gray-800 px-3 py-1 rounded";
+        li.innerHTML = `${s.qty}x ${s.sauceName} - ₱${s.price * s.qty} <button onclick="removeSauce(${index})" class="text-red-500 ml-2">✕</button>`;
+        ul.appendChild(li);
+    });
+}
+
+// Remove sauce
+function removeSauce(index) {
+    sauces.splice(index, 1);
+    renderSauces();
+    generateOrderText(); // update order
+}
+
+// Add product
+function addProductToCart() {
+    const productSelect = document.getElementById("product").value;
     const qty = parseInt(document.getElementById("qty").value);
-    const sauce = parseInt(document.getElementById("sauce").value);
+    if (!productSelect) return alert("Please select a product");
+    if (!qty || qty < 1) return alert("Quantity must be at least 1");
 
-    if (!product) return 0;
+    let [productName, basePrice] = productSelect.split("|");
+    basePrice = parseInt(basePrice);
 
-    const price = parseInt(product.split("|")[1]);
-    const total = (price + sauce) * qty;
-    document.getElementById("total").innerText = total;
+    const productTotal = basePrice * qty;
 
-    generateOrderText(product, qty, sauce, total);
-    return total;
+    let sauceDetails = [];
+    let sauceTotal = 0;
+    sauces.forEach(s => {
+        sauceTotal += s.price * s.qty;
+        sauceDetails.push({ name: s.sauceName, qty: s.qty, price: s.price, total: s.price * s.qty });
+    });
+
+    const total = productTotal + sauceTotal;
+
+    addedProducts.push({
+        productName,
+        qty,
+        unitPrice: basePrice,
+        sauces: sauceDetails,
+        productTotal,
+        sauceTotal,
+        total
+    });
+
+    sauces = [];
+    renderSauces();
+    renderAddedProducts();
+
+    document.getElementById("qty").value = 1;
+    document.getElementById("product").selectedIndex = 0;
+    generateOrderText(); // update order
 }
 
-// Update total and order text
-setInterval(calculateTotal, 300);
+// Remove product
+function removeAddedProduct(index) {
+    addedProducts.splice(index, 1);
+    renderAddedProducts();
+    generateOrderText(); // update order
+}
 
-function generateOrderText(product, qty, sauce, total) {
-    if (!product) return;
+// Render added products
+function renderAddedProducts() {
+    const ul = document.getElementById("addedProducts");
+    ul.innerHTML = "";
 
-    const productName = product.split("|")[0];
-    const sauceName = 
-        sauce == 0 ? "No Sauce" :
-        sauce == 15 ? "Medium Sauce (+15)" :
-                      "Large Sauce (+20)";
-    
+    addedProducts.forEach((p, index) => {
+        const li = document.createElement("li");
+        li.className = "bg-gray-800 p-3 rounded space-y-1";
+
+        let sauceHTML = "";
+        if (p.sauces.length > 0) {
+            sauceHTML = `<ul class="ml-5 space-y-1 text-gray-300">`;
+            p.sauces.forEach(s => {
+                sauceHTML += `<li>${s.qty}x ${s.name} - ₱${s.total}</li>`;
+            });
+            sauceHTML += `</ul>`;
+        }
+
+        li.innerHTML = `
+            <div class="flex justify-between items-center">
+                <span>${p.qty}x ${p.productName} - ₱${p.productTotal}</span>
+                <span>₱${p.total}</span>
+            </div>
+            ${sauceHTML}
+            <button onclick="removeAddedProduct(${index})" class="text-red-500 mt-1">✕ Remove</button>
+        `;
+        ul.appendChild(li);
+    });
+
+    renderCart();
+}
+
+// Render cart
+function renderCart() {
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    addedProducts.forEach(p => {
+        total += p.total;
+        const li = document.createElement("li");
+        li.className = "bg-gray-800 p-2 rounded mb-2";
+
+        let sauceHTML = "";
+        if (p.sauces.length > 0) {
+            sauceHTML = `<ul class="ml-5 space-y-1 text-gray-300">`;
+            p.sauces.forEach(s => {
+                sauceHTML += `<li>${s.qty}x ${s.name} - ₱${s.total}</li>`;
+            });
+            sauceHTML += `</ul>`;
+        }
+
+        li.innerHTML = `
+            <div class="flex justify-between items-center">
+                <span>${p.qty}x ${p.productName} - ₱${p.productTotal}</span>
+                <span>₱${p.total}</span>
+            </div>
+            ${sauceHTML}
+        `;
+        cartItems.appendChild(li);
+    });
+
+    document.getElementById("cartTotal").innerText = total;
+}
+
+// Generate order text
+function generateOrderText() {
+    if (!addedProducts.length) {
+        document.getElementById("orderText").value = "";
+        return;
+    }
+
     const address = document.getElementById("address").value || "[Enter your address]";
+    let message = "Order Details\n-------------------------\n";
 
-    const message = `
-Order Details
--------------------------
-Product: ${productName}
-Quantity: ${qty}
-Sauce: ${sauceName}
+    addedProducts.forEach(p => {
+        message += `${p.qty}x ${p.productName} - ₱${p.productTotal}\n`;
+        p.sauces.forEach(s => {
+            message += `${s.qty}x ${s.name} - ₱${s.total}\n`;
+        });
+        message += `Subtotal: ₱${p.total}\n-------------------------\n`;
+    });
 
-Delivery Address:
-${address}
+    const grandTotal = addedProducts.reduce((sum, p) => sum + p.total, 0);
+    message += `Delivery Address:\n${address}\nTotal Payment: ₱${grandTotal}\n-------------------------\nPlease confirm my order Boss Ivan.`;
 
-Total Payment: ₱${total}
--------------------------
-Please confirm my order Boss Ivan.
-    `;
-
-    document.getElementById("orderText").value = message.trim();
+    document.getElementById("orderText").value = message;
 }
 
-// COPY ORDER WITH SWEETALERT
+// Copy order
 function copyOrder() {
     const orderText = document.getElementById("orderText");
+    if (!orderText.value) return alert("Cart is empty!");
     orderText.select();
-    orderText.setSelectionRange(0, 99999); // mobile
     document.execCommand("copy");
-
     Swal.fire({
         icon: 'success',
         title: 'Copied!',
@@ -196,10 +373,15 @@ function copyOrder() {
     });
 }
 
+// Open Messenger
 function openMessenger() {
     window.open("https://m.me/ivan.llanto.5", "_blank");
 }
 </script>
+
+
+
+
 
 <footer class="bg-black py-10 border-t border-orange-900/30 text-center text-gray-500 text-sm">
     <p class="mb-4">© 2025 Chicken Ala King Ni Boss Ivan. All rights reserved.</p>
