@@ -151,10 +151,13 @@
     <label class="block font-bold mb-2 text-white">Add Sauce (You can add multiple)</label>
     <div class="flex items-center gap-2">
       <select id="sauceSelect" class="flex-1 p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500">
-        <option value="0">No Sauce</option>
+        <option value="0">No Sauce/Rice</option>
+           <optgroup label="------Extra Sauce------"></optgroup>
         <option value="5">Spicy Sauce +₱5</option>
         <option value="15">Medium Sauce +₱15</option>
         <option value="20">Large Sauce +₱20</option>
+        <optgroup label="------Extra Rice------"></optgroup>
+             <option value="10"> Extra Rice +₱10</option>
       </select>
       <input type="number" id="sauceQty" min="1" value="1" class="w-20 p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Qty">
       <button onclick="addSauce()" class="bg-orange-500 hover:bg-orange-600 text-black font-bold px-4 py-2 rounded-xl transition shadow-md">
@@ -420,17 +423,37 @@ function generateOrderText() {
     document.getElementById("orderText").value = message;
 }
 
-// Copy order
 function copyOrder() {
     const orderText = document.getElementById("orderText");
-    if (!orderText.value) return alert("Cart is empty!");
+
+    if (!orderText.value) {
+        // Show SweetAlert if cart is empty
+        Swal.fire({
+            icon: 'warning',
+            title: 'Cart is empty!',
+            text: 'Please add items to your cart before copying.',
+            confirmButtonColor: '#f97316'
+        });
+        return;
+    }
+
+    // Copy the order to clipboard
     orderText.select();
-    document.execCommand("copy");
-    Swal.fire({
-        icon: 'success',
-        title: 'Copied!',
-        text: 'Your order has been copied. You can now paste it in Messenger.',
-        confirmButtonColor: '#f97316'
+    orderText.setSelectionRange(0, 99999); // For mobile devices
+    navigator.clipboard.writeText(orderText.value).then(() => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Copied!',
+            text: 'Your order has been copied. You can now paste it in Messenger.',
+            confirmButtonColor: '#f97316'
+        });
+    }).catch(() => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops!',
+            text: 'Failed to copy your order. Please try again.',
+            confirmButtonColor: '#f97316'
+        });
     });
 }
 
